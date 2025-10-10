@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PariwisataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Places">
+          <Key>
+            <PropertyRef Name="PlaceID" />
+          </Key>
+          <Property Name="PlaceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="BasicPrice" Type="int" Nullable="false" />
+          <Property Name="Available" Type="bit" />
+          <Property Name="AvgTourDuration" Type="int" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="ReservationID" />
+          </Key>
+          <Property Name="ReservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuID" Type="int" Nullable="false" />
+          <Property Name="TransportID" Type="int" Nullable="false" />
+          <Property Name="PlannedDate" Type="datetime" />
+          <Property Name="TotalPrice" Type="int" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TourMenu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlaceID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" />
+          <Property Name="Benefit" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="QuotaPerDay" Type="int" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Transportation">
+          <Key>
+            <PropertyRef Name="TransportID" />
+          </Key>
+          <Property Name="TransportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="Price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TransType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreatedAt" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Reservati__Custo__6754599E">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__MenuI__68487DD7">
+          <End Role="TourMenu" Type="Self.TourMenu" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TourMenu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__Trans__66603565">
+          <End Role="Transportation" Type="Self.Transportation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transportation">
+              <PropertyRef Name="TransportID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="TransportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TourMenu__Update__5BE2A6F2">
+          <End Role="Places" Type="Self.Places" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TourMenu" Type="Self.TourMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Places">
+              <PropertyRef Name="PlaceID" />
+            </Principal>
+            <Dependent Role="TourMenu">
+              <PropertyRef Name="PlaceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transport__TypeI__628FA481">
+          <End Role="TransType" Type="Self.TransType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Transportation" Type="Self.Transportation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransType">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Transportation">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PariwisataModelStoreContainer">
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Places" EntityType="Self.Places" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourMenu" EntityType="Self.TourMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transportation" EntityType="Self.Transportation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TransType" EntityType="Self.TransType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Reservati__Custo__6754599E" Association="Self.FK__Reservati__Custo__6754599E">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__MenuI__68487DD7" Association="Self.FK__Reservati__MenuI__68487DD7">
+            <End Role="TourMenu" EntitySet="TourMenu" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__Trans__66603565" Association="Self.FK__Reservati__Trans__66603565">
+            <End Role="Transportation" EntitySet="Transportation" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TourMenu__Update__5BE2A6F2" Association="Self.FK__TourMenu__Update__5BE2A6F2">
+            <End Role="Places" EntitySet="Places" />
+            <End Role="TourMenu" EntitySet="TourMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transport__TypeI__628FA481" Association="Self.FK__Transport__TypeI__628FA481">
+            <End Role="TransType" EntitySet="TransType" />
+            <End Role="Transportation" EntitySet="Transportation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PariwisataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__Custo__6754599E" FromRole="Customers" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="Place">
+          <Key>
+            <PropertyRef Name="PlaceID" />
+          </Key>
+          <Property Name="PlaceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BasicPrice" Type="Int32" Nullable="false" />
+          <Property Name="Available" Type="Boolean" />
+          <Property Name="AvgTourDuration" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="TourMenus" Relationship="Self.FK__TourMenu__Update__5BE2A6F2" FromRole="Places" ToRole="TourMenu" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="ReservationID" />
+          </Key>
+          <Property Name="ReservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuID" Type="Int32" Nullable="false" />
+          <Property Name="TransportID" Type="Int32" Nullable="false" />
+          <Property Name="PlannedDate" Type="DateTime" Precision="3" />
+          <Property Name="TotalPrice" Type="Int32" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Reservati__Custo__6754599E" FromRole="Reservation" ToRole="Customers" />
+          <NavigationProperty Name="TourMenu" Relationship="Self.FK__Reservati__MenuI__68487DD7" FromRole="Reservation" ToRole="TourMenu" />
+          <NavigationProperty Name="Transportation" Relationship="Self.FK__Reservati__Trans__66603565" FromRole="Reservation" ToRole="Transportation" />
+        </EntityType>
+        <EntityType Name="TourMenu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlaceID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Benefit" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QuotaPerDay" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Place" Relationship="Self.FK__TourMenu__Update__5BE2A6F2" FromRole="TourMenu" ToRole="Places" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__MenuI__68487DD7" FromRole="TourMenu" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="Transportation">
+          <Key>
+            <PropertyRef Name="TransportID" />
+          </Key>
+          <Property Name="TransportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__Trans__66603565" FromRole="Transportation" ToRole="Reservation" />
+          <NavigationProperty Name="TransType" Relationship="Self.FK__Transport__TypeI__628FA481" FromRole="Transportation" ToRole="TransType" />
+        </EntityType>
+        <EntityType Name="TransType">
+          <Key>
+            <PropertyRef Name="TypeID" />
+          </Key>
+          <Property Name="TypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Transportations" Relationship="Self.FK__Transport__TypeI__628FA481" FromRole="TransType" ToRole="Transportation" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK__Reservati__Custo__6754599E">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TourMenu__Update__5BE2A6F2">
+          <End Role="Places" Type="Self.Place" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TourMenu" Type="Self.TourMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Places">
+              <PropertyRef Name="PlaceID" />
+            </Principal>
+            <Dependent Role="TourMenu">
+              <PropertyRef Name="PlaceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__MenuI__68487DD7">
+          <End Role="TourMenu" Type="Self.TourMenu" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TourMenu">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="MenuID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__Trans__66603565">
+          <End Role="Transportation" Type="Self.Transportation" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transportation">
+              <PropertyRef Name="TransportID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="TransportID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Transport__TypeI__628FA481">
+          <End Role="TransType" Type="Self.TransType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Transportation" Type="Self.Transportation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransType">
+              <PropertyRef Name="TypeID" />
+            </Principal>
+            <Dependent Role="Transportation">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PariwisataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Places" EntityType="Self.Place" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+          <EntitySet Name="TourMenus" EntityType="Self.TourMenu" />
+          <EntitySet Name="Transportations" EntityType="Self.Transportation" />
+          <EntitySet Name="TransTypes" EntityType="Self.TransType" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Reservati__Custo__6754599E" Association="Self.FK__Reservati__Custo__6754599E">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TourMenu__Update__5BE2A6F2" Association="Self.FK__TourMenu__Update__5BE2A6F2">
+            <End Role="Places" EntitySet="Places" />
+            <End Role="TourMenu" EntitySet="TourMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__MenuI__68487DD7" Association="Self.FK__Reservati__MenuI__68487DD7">
+            <End Role="TourMenu" EntitySet="TourMenus" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__Trans__66603565" Association="Self.FK__Reservati__Trans__66603565">
+            <End Role="Transportation" EntitySet="Transportations" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Transport__TypeI__628FA481" Association="Self.FK__Transport__TypeI__628FA481">
+            <End Role="TransType" EntitySet="TransTypes" />
+            <End Role="Transportation" EntitySet="Transportations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PariwisataModelStoreContainer" CdmEntityContainer="PariwisataEntities">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="PariwisataModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Places">
+            <EntityTypeMapping TypeName="PariwisataModel.Place">
+              <MappingFragment StoreEntitySet="Places">
+                <ScalarProperty Name="PlaceID" ColumnName="PlaceID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="BasicPrice" ColumnName="BasicPrice" />
+                <ScalarProperty Name="Available" ColumnName="Available" />
+                <ScalarProperty Name="AvgTourDuration" ColumnName="AvgTourDuration" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="PariwisataModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="TransportID" ColumnName="TransportID" />
+                <ScalarProperty Name="PlannedDate" ColumnName="PlannedDate" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourMenus">
+            <EntityTypeMapping TypeName="PariwisataModel.TourMenu">
+              <MappingFragment StoreEntitySet="TourMenu">
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="PlaceID" ColumnName="PlaceID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Benefit" ColumnName="Benefit" />
+                <ScalarProperty Name="QuotaPerDay" ColumnName="QuotaPerDay" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transportations">
+            <EntityTypeMapping TypeName="PariwisataModel.Transportation">
+              <MappingFragment StoreEntitySet="Transportation">
+                <ScalarProperty Name="TransportID" ColumnName="TransportID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TransTypes">
+            <EntityTypeMapping TypeName="PariwisataModel.TransType">
+              <MappingFragment StoreEntitySet="TransType">
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PariwisataModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
