@@ -19,7 +19,7 @@ namespace Pariwisata_Apps
 
         private void MainApps_Load(object sender, EventArgs e)
         {
-            Intro intro = new Intro();
+            Dashboard intro = new Dashboard();
             intro.Dock = DockStyle.Fill;
             panel1.Controls.Add(intro);
             panel2.Controls.Add(new LoginPage());

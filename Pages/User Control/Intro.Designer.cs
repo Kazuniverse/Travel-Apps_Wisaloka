@@ -58,6 +58,7 @@
             // 
             // DotPanel
             // 
+            this.DotPanel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.DotPanel.Location = new System.Drawing.Point(380, 398);
             this.DotPanel.Name = "DotPanel";
             this.DotPanel.Size = new System.Drawing.Size(60, 39);
@@ -65,6 +66,7 @@
             // 
             // parrotButton2
             // 
+            this.parrotButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.parrotButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.parrotButton2.ButtonImage = global::Pariwisata_Apps.Properties.Resources.play_L_s851;
             this.parrotButton2.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
@@ -90,6 +92,7 @@
             // 
             // parrotButton1
             // 
+            this.parrotButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.parrotButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.parrotButton1.ButtonImage = global::Pariwisata_Apps.Properties.Resources.play_R_s85;
             this.parrotButton1.ButtonStyle = ReaLTaiizor.Controls.ParrotButton.Style.MaterialRounded;
@@ -115,6 +118,7 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.MainPanel.AutoSize = true;
             this.MainPanel.BackColor = System.Drawing.Color.Transparent;
             this.MainPanel.Controls.Add(this.ChildPanel1);
@@ -128,6 +132,7 @@
             // ChildPanel1
             // 
             this.ChildPanel1.AutoScroll = true;
+            this.ChildPanel1.AutoSize = true;
             this.ChildPanel1.BackColor = System.Drawing.Color.Transparent;
             this.ChildPanel1.Controls.Add(this.pictureBox1);
             this.ChildPanel1.Controls.Add(this.label1);
@@ -161,6 +166,7 @@
             // 
             // ChildPanel2
             // 
+            this.ChildPanel2.AutoSize = true;
             this.ChildPanel2.BackColor = System.Drawing.Color.Transparent;
             this.ChildPanel2.Controls.Add(this.pictureBox2);
             this.ChildPanel2.Controls.Add(this.label2);
@@ -194,6 +200,7 @@
             // 
             // ChildPanel3
             // 
+            this.ChildPanel3.AutoSize = true;
             this.ChildPanel3.BackColor = System.Drawing.Color.Transparent;
             this.ChildPanel3.Controls.Add(this.label4);
             this.ChildPanel3.Controls.Add(this.pictureBox3);
@@ -268,6 +275,7 @@
             this.Name = "Intro";
             this.Size = new System.Drawing.Size(800, 450);
             this.MainPanel.ResumeLayout(false);
+            this.MainPanel.PerformLayout();
             this.ChildPanel1.ResumeLayout(false);
             this.ChildPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
