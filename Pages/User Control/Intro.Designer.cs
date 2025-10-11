@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Intro));
-            this.panel1 = new System.Windows.Forms.Panel();
             this.DotPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.parrotButton2 = new ReaLTaiizor.Controls.ParrotButton();
             this.parrotButton1 = new ReaLTaiizor.Controls.ParrotButton();
@@ -46,8 +45,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.panel1.SuspendLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.MainPanel.SuspendLayout();
             this.ChildPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -55,25 +53,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.ChildPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.DotPanel);
-            this.panel1.Controls.Add(this.parrotButton2);
-            this.panel1.Controls.Add(this.parrotButton1);
-            this.panel1.Controls.Add(this.MainPanel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 450);
-            this.panel1.TabIndex = 6;
             // 
             // DotPanel
             // 
-            this.DotPanel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.DotPanel.Location = new System.Drawing.Point(380, 398);
             this.DotPanel.Name = "DotPanel";
             this.DotPanel.Size = new System.Drawing.Size(60, 39);
@@ -131,18 +115,18 @@
             // 
             // MainPanel
             // 
+            this.MainPanel.AutoSize = true;
             this.MainPanel.BackColor = System.Drawing.Color.Transparent;
             this.MainPanel.Controls.Add(this.ChildPanel1);
             this.MainPanel.Controls.Add(this.ChildPanel2);
             this.MainPanel.Controls.Add(this.ChildPanel3);
             this.MainPanel.Location = new System.Drawing.Point(12, 12);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(776, 380);
+            this.MainPanel.Size = new System.Drawing.Size(776, 383);
             this.MainPanel.TabIndex = 2;
             // 
             // ChildPanel1
             // 
-            this.ChildPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ChildPanel1.AutoScroll = true;
             this.ChildPanel1.BackColor = System.Drawing.Color.Transparent;
             this.ChildPanel1.Controls.Add(this.pictureBox1);
@@ -259,14 +243,30 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
+            // panel1
+            // 
+            this.panel1.AutoSize = true;
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.DotPanel);
+            this.panel1.Controls.Add(this.parrotButton2);
+            this.panel1.Controls.Add(this.parrotButton1);
+            this.panel1.Controls.Add(this.MainPanel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(800, 450);
+            this.panel1.TabIndex = 6;
+            // 
             // Intro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.Controls.Add(this.panel1);
             this.Name = "Intro";
             this.Size = new System.Drawing.Size(800, 450);
-            this.panel1.ResumeLayout(false);
             this.MainPanel.ResumeLayout(false);
             this.ChildPanel1.ResumeLayout(false);
             this.ChildPanel1.PerformLayout();
@@ -277,13 +277,14 @@
             this.ChildPanel3.ResumeLayout(false);
             this.ChildPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel DotPanel;
         private ReaLTaiizor.Controls.ParrotButton parrotButton2;
         private ReaLTaiizor.Controls.ParrotButton parrotButton1;
@@ -299,6 +300,6 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Panel panel1;
     }
 }

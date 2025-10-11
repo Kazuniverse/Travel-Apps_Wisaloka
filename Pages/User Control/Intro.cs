@@ -180,6 +180,8 @@ namespace Pariwisata_Apps
             {
                 parrotButton1.Visible = true;
                 parrotButton1.ButtonText = "Lanjut";
+                parrotButton1.Click -= MulaiButton;
+                parrotButton1.Click += NextButton;
             }
             else
             {
