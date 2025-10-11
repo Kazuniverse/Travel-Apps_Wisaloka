@@ -16,7 +16,7 @@ namespace Pariwisata_Apps
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Introduction());
+            Application.Run(new MainApps());
         }
     }
 }

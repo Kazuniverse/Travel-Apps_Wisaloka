@@ -63,6 +63,16 @@ namespace Pariwisata_Apps.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _71335355_SL_072923_62010_97 {
+            get {
+                object obj = ResourceManager.GetObject("71335355_SL-072923-62010-97", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arrow_small_left {
             get {
                 object obj = ResourceManager.GetObject("arrow-small-left", resourceCulture);
@@ -83,9 +93,79 @@ namespace Pariwisata_Apps.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_small_right1 {
+            get {
+                object obj = ResourceManager.GetObject("arrow-small-right1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bg_1 {
+            get {
+                object obj = ResourceManager.GetObject("bg-1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap designer_collection_concept {
             get {
                 object obj = ResourceManager.GetObject("designer-collection-concept", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play_L_s85 {
+            get {
+                object obj = ResourceManager.GetObject("play-L-s85", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play_L_s851 {
+            get {
+                object obj = ResourceManager.GetObject("play-L-s851", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play_R {
+            get {
+                object obj = ResourceManager.GetObject("play-R", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play_R_s85 {
+            get {
+                object obj = ResourceManager.GetObject("play-R-s85", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap play_R_s851 {
+            get {
+                object obj = ResourceManager.GetObject("play-R-s851", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
