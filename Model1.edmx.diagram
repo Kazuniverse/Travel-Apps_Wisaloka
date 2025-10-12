@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7d856fe12ed046468bb68d44a5097c2e" Name="Diagram1">
-        <EntityTypeShape EntityType="PariwisataModel.Customer" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+      <Diagram DiagramId="3ecffc5ac6ee42988638f02652e44888" Name="Diagram1">
+        <EntityTypeShape EntityType="PariwisataModel.Customer" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PariwisataModel.Place" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="PariwisataModel.Reservation" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="PariwisataModel.TourMenu" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="PariwisataModel.Transportation" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="PariwisataModel.TransType" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PariwisataModel.Transportation" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PariwisataModel.TransType" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
         <EntityTypeShape EntityType="PariwisataModel.User" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="PariwisataModel.FK__Reservati__Custo__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="PariwisataModel.FK__Reservati__Custo__73BA3083" ManuallyRouted="false" />
         <AssociationConnector Association="PariwisataModel.FK__TourMenu__Update__5BE2A6F2" ManuallyRouted="false" />
         <AssociationConnector Association="PariwisataModel.FK__Reservati__MenuI__68487DD7" ManuallyRouted="false" />
         <AssociationConnector Association="PariwisataModel.FK__Reservati__Trans__66603565" ManuallyRouted="false" />
