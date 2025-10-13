@@ -15,7 +15,6 @@ namespace Pariwisata_Apps
     {
         public event EventHandler LoginRequested;
         Customer customer = new Customer();
-        MainApps main;
 
         public RegisterPage()
         {
@@ -28,6 +27,7 @@ namespace Pariwisata_Apps
             string pass = guna2TextBox4.Text.Trim();
 
             string hashed = PasswordHelper.HashPassword(pass);
+            });
 
             customer.Name = guna2TextBox1.Text.Trim();
             customer.Email = guna2TextBox2.Text.Trim();
