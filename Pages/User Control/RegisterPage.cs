@@ -22,26 +22,47 @@ namespace Pariwisata_Apps
             label7.Click += (s, e) => LoginRequested?.Invoke(this, EventArgs.Empty);
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private async void guna2Button1_Click(object sender, EventArgs e)
         {
-            string pass = guna2TextBox4.Text.Trim();
+            Form parentForm = this.FindForm();
 
-            string hashed = PasswordHelper.HashPassword(pass);
+            Loading loading = new Loading();
+
+            loading.Show();
+            Application.DoEvents();
+
+            await Task.Run(() =>
+            {
+                System.Threading.Thread.Sleep(1000);
             });
 
             customer.Name = guna2TextBox1.Text.Trim();
             customer.Email = guna2TextBox2.Text.Trim();
             customer.Phone = guna2TextBox3.Text.Trim();
-            customer.PasswordHash = hashed;
+            customer.PasswordHash = PasswordHelper.HashPassword(guna2TextBox4.Text.Trim());
             customer.UpdatedAt = DateTime.Now;
 
             using (var db = new PariwisataEntities())
             {
-                db.Customers.Add(customer);
-                db.SaveChanges();
+                if (db.Customers.Any(u => u.Email == customer.Email))
+                {
+                    MessageBox.Show("Email Is Already Used!");
+                }
+                else if (db.Customers.Any(u => u.Name == customer.Name))
+                {
+                    MessageBox.Show("Name Is Already Taken!");
+                }
+                else
+                {
+                    db.Customers.Add(customer);
+                    db.SaveChanges();
+                }
             }
 
-            main.panel2.Dispose();
+            Panel target = parentForm.Controls["panel2"] as Panel;
+            target?.Dispose();
+
+            loading.Close();
         }
     }
 }
