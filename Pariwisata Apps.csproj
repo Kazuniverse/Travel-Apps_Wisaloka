@@ -71,8 +71,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\AdminControl\History.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\AdminControl\History.Designer.cs">
+      <DependentUpon>History.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AdminControl\Menu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\AdminControl\Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Form\AddingMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Form\AddingMenu.Designer.cs">
+      <DependentUpon>AddingMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customer.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Form\EditingMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Form\EditingMenu.Designer.cs">
+      <DependentUpon>EditingMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Loading.cs">
       <SubType>Form</SubType>
@@ -140,6 +164,7 @@
     <Compile Include="Reservation.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Session.cs" />
     <Compile Include="TourMenu.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -152,8 +177,26 @@
     <Compile Include="User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AdminControl\UserData.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\AdminControl\UserData.Designer.cs">
+      <DependentUpon>UserData.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Pages\AdminControl\History.resx">
+      <DependentUpon>History.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Loading.resx">
       <DependentUpon>Loading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\AdminControl\Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Form\AddingMenu.resx">
+      <DependentUpon>AddingMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Form\EditingMenu.resx">
+      <DependentUpon>EditingMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\User Control\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
@@ -183,6 +226,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Pages\AdminControl\UserData.resx">
+      <DependentUpon>UserData.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -191,6 +237,10 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Customer.datasource" />
+    <None Include="Properties\DataSources\Place.datasource" />
+    <None Include="Properties\DataSources\Reservation.datasource" />
+    <None Include="Properties\DataSources\User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -204,10 +254,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\AdminControl\" />
-    <Folder Include="Pages\Form\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\square.png" />
   </ItemGroup>

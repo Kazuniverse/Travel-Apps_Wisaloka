@@ -21,8 +21,20 @@ namespace Pariwisata_Apps
             label5.Click += (s, e) => RegisterRequested?.Invoke(this, EventArgs.Empty);
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
+        private async void guna2Button1_Click(object sender, EventArgs e)
         {
+            Form parent = this.FindForm();
+
+            Loading load = new Loading();
+
+            load.Show();
+            Application.DoEvents();
+
+            await Task.Run(() =>
+            {
+                System.Threading.Thread.Sleep(1000);
+            });
+
             string email = guna2TextBox1.Text.Trim();
             string password = guna2TextBox2.Text.Trim();
 
@@ -33,14 +45,21 @@ namespace Pariwisata_Apps
 
                 if (customer == null || !valid)
                 {
+                    load.Hide();
                     MessageBox.Show("Email Or Password Invalid!");
                     return;
                 }
                 else
                 {
+                    load.Hide();
+                    Session.CustomerID = customer.CustomerID;
                     MessageBox.Show("Login Success!");
-                    return;
                 }
+
+                load.Show();
+                Panel target = parent.Controls["panel2"] as Panel;
+                target?.Dispose();
+                load.Hide();
             }
         }
     }

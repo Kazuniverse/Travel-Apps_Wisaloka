@@ -30,8 +30,16 @@ namespace Pariwisata_Apps
 
         private void MainApps_Load(object sender, EventArgs e)
         {
-            LoadPage(panel1, new Intro());
-            LoadPage(panel2, login);
+            if (Session.CustomerID == 0)
+            {
+                LoadPage(panel1, new Intro());
+                LoadPage(panel2, login);
+            }
+            else
+            {
+                panel1.Dispose();
+                panel2.Dispose();
+            }
             LoadPage(panel3, new Dashboard());
             LoadPage(panel4, new AdminPage());
         }

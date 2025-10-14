@@ -34,7 +34,7 @@ namespace Pariwisata_Apps
             await Task.Run(() =>
             {
                 System.Threading.Thread.Sleep(1000);
-            });
+            }); 
 
             customer.Name = guna2TextBox1.Text.Trim();
             customer.Email = guna2TextBox2.Text.Trim();
@@ -46,23 +46,29 @@ namespace Pariwisata_Apps
             {
                 if (db.Customers.Any(u => u.Email == customer.Email))
                 {
+                    loading.Hide();
                     MessageBox.Show("Email Is Already Used!");
                 }
                 else if (db.Customers.Any(u => u.Name == customer.Name))
                 {
+                    loading.Hide();
                     MessageBox.Show("Name Is Already Taken!");
                 }
                 else
                 {
+                    MessageBox.Show("Register Succes!");
                     db.Customers.Add(customer);
                     db.SaveChanges();
+                    Session.CustomerID = customer.CustomerID;
+                    loading.Hide();
                 }
             }
+            loading.Show();
 
             Panel target = parentForm.Controls["panel2"] as Panel;
             target?.Dispose();
 
-            loading.Close();
+            loading.Hide();
         }
     }
 }

@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.placeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.placeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
@@ -42,7 +45,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(150, 100);
             this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
+            this.button2.Text = "Menu";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
@@ -52,7 +55,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(150, 100);
             this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
+            this.button3.Text = "User Data";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button4
@@ -62,7 +65,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(150, 100);
             this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
+            this.button4.Text = "History";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button5
@@ -72,7 +75,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(150, 35);
             this.button5.TabIndex = 4;
-            this.button5.Text = "button5";
+            this.button5.Text = "Logout";
             this.button5.UseVisualStyleBackColor = true;
             // 
             // panel1
@@ -82,6 +85,10 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(604, 410);
             this.panel1.TabIndex = 5;
+            // 
+            // placeBindingSource
+            // 
+            this.placeBindingSource.DataSource = typeof(Pariwisata_Apps.Place);
             // 
             // AdminPage
             // 
@@ -95,6 +102,8 @@
             this.Name = "AdminPage";
             this.Padding = new System.Windows.Forms.Padding(15);
             this.Size = new System.Drawing.Size(800, 450);
+            this.Load += new System.EventHandler(this.AdminPage_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.placeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -105,5 +114,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.BindingSource placeBindingSource;
     }
 }

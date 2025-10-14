@@ -16,5 +16,17 @@ namespace Pariwisata_Apps
         {
             InitializeComponent();
         }
+
+        void LoadPage(UserControl page)
+        {
+            panel1.Controls.Clear();
+            page.Dock = DockStyle.Fill;
+            panel1.Controls.Add(page);
+        }
+
+        private void AdminPage_Load(object sender, EventArgs e)
+        {
+            LoadPage(new UserData());
+        }
     }
 }
