@@ -26,13 +26,15 @@ namespace Pariwisata_Apps
 
             login.RegisterRequested += (s, e) => LoadPage(panel2, register);
             register.LoginRequested += (s, e) => LoadPage(panel2, login);
+            login.masuk += (s, e) => LoadPage(panel3, new Dashboard());
+            register.masuk += (s, e) => LoadPage(panel3, new Dashboard());
         }
 
         private void MainApps_Load(object sender, EventArgs e)
         {
             if (Session.CustomerID == 0)
             {
-                LoadPage(panel1, new Intro());
+                LoadPage(panel1, new SettingPage());
                 LoadPage(panel2, login);
             }
             else
@@ -40,7 +42,6 @@ namespace Pariwisata_Apps
                 panel1.Dispose();
                 panel2.Dispose();
             }
-            LoadPage(panel3, new Dashboard());
             LoadPage(panel4, new AdminPage());
         }
 

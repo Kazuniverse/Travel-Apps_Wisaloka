@@ -42,7 +42,6 @@
             this.availableDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.avgTourDurationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updatedAtDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.placeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
@@ -50,7 +49,6 @@
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.placeBindingSource)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,7 +83,6 @@
             this.availableDataGridViewTextBoxColumn,
             this.avgTourDurationDataGridViewTextBoxColumn,
             this.updatedAtDataGridViewTextBoxColumn});
-            this.guna2DataGridView1.DataSource = this.placeBindingSource;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(218)))), ((int)(((byte)(223)))));
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -190,10 +187,6 @@
             this.updatedAtDataGridViewTextBoxColumn.HeaderText = "UpdatedAt";
             this.updatedAtDataGridViewTextBoxColumn.Name = "updatedAtDataGridViewTextBoxColumn";
             this.updatedAtDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // placeBindingSource
-            // 
-            this.placeBindingSource.DataSource = typeof(Pariwisata_Apps.Place);
             // 
             // guna2Panel1
             // 
@@ -302,7 +295,6 @@
             this.Size = new System.Drawing.Size(604, 410);
             this.Load += new System.EventHandler(this.Menu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.placeBindingSource)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -311,7 +303,6 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
-        private System.Windows.Forms.BindingSource placeBindingSource;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;

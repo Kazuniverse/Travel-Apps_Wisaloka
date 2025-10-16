@@ -100,5 +100,10 @@ namespace Pariwisata_Apps
         {
             LoadData();
         }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

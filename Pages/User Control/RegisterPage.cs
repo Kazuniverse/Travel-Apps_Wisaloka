@@ -14,6 +14,7 @@ namespace Pariwisata_Apps
     public partial class RegisterPage : UserControl
     {
         public event EventHandler LoginRequested;
+        public event EventHandler masuk;
         Customer customer = new Customer();
 
         public RegisterPage()
@@ -60,6 +61,7 @@ namespace Pariwisata_Apps
                     db.Customers.Add(customer);
                     db.SaveChanges();
                     Session.CustomerID = customer.CustomerID;
+                    masuk?.Invoke(this, EventArgs.Empty);
                     loading.Hide();
                 }
             }

@@ -14,6 +14,7 @@ namespace Pariwisata_Apps
     public partial class LoginPage : UserControl
     {
         public event EventHandler RegisterRequested;
+        public event EventHandler masuk;
 
         public LoginPage()
         {
@@ -53,6 +54,7 @@ namespace Pariwisata_Apps
                 {
                     load.Hide();
                     Session.CustomerID = customer.CustomerID;
+                    masuk?.Invoke(this, EventArgs.Empty);
                     MessageBox.Show("Login Success!");
                 }
 

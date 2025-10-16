@@ -26,7 +26,7 @@ namespace Pariwisata_Apps
 
         private void AdminPage_Load(object sender, EventArgs e)
         {
-            LoadPage(new UserData());
+            LoadPage(new Menu());
         }
     }
 }
