@@ -170,6 +170,12 @@
     <Compile Include="Pages\MainApps.Designer.cs">
       <DependentUpon>MainApps.cs</DependentUpon>
     </Compile>
+    <Compile Include="PassChangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PassChangeForm.Designer.cs">
+      <DependentUpon>PassChangeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PasswordHelper.cs" />
     <Compile Include="Place.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -245,6 +251,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\User Control\RegisterPage.resx">
       <DependentUpon>RegisterPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PassChangeForm.resx">
+      <DependentUpon>PassChangeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
