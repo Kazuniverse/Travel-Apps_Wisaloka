@@ -44,6 +44,7 @@
             // 
             this.guna2Button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.guna2Button1.Animated = true;
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Button1.BorderRadius = 10;
             this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -60,6 +61,7 @@
             this.guna2Button1.Size = new System.Drawing.Size(120, 30);
             this.guna2Button1.TabIndex = 0;
             this.guna2Button1.Text = "detail";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // guna2Panel1
             // 

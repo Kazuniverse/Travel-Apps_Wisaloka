@@ -20,6 +20,9 @@ namespace Pariwisata_Apps
             InitializeComponent();
 
             guna2Button7.Click += (s, e) => home?.Invoke(this, EventArgs.Empty);
+
+            guna2Panel4.FillColor = Color.FromArgb(30, Color.Black);
+            guna2Panel4.Visible = false;
         }
 
         void LoadData()
@@ -55,6 +58,10 @@ namespace Pariwisata_Apps
                         card.Cover = Properties.Resources.arrow_small_left;
                     }
 
+                    card.Page = this;
+                    card.ReservationID = history.ReservationID;
+
+                    card.Page = this;
                     flowLayoutPanel1.Controls.Add(card);
                     card.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
                 }

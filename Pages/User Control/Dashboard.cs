@@ -20,6 +20,7 @@ namespace Pariwisata_Apps
         private string[] say = { "Mau Kemana Nih Kita?", "Hmm... Enaknya Kemana Ya", "Wih! Lagi Banyak Duit Nih!"};
         private Random rand = new Random();
         public event EventHandler setting;
+        public event EventHandler history;
 
         public Dashboard()
         {
@@ -31,6 +32,7 @@ namespace Pariwisata_Apps
             label2.Text = say[rand.Next(say.Length)];
 
             guna2CirclePictureBox2.Click += (s, e) => setting?.Invoke(this, EventArgs.Empty);
+            guna2CirclePictureBox3.Click += (s, e) => history?.Invoke(this, EventArgs.Empty);
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
@@ -202,6 +204,16 @@ namespace Pariwisata_Apps
         private void Dashboard_Resize(object sender, EventArgs e)
         {
 
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            guna2TextBox2.Clear();
+            foreverTrackBar1.Value = 100;
+            guna2RadioButton1.Checked = false;
+            guna2RadioButton2.Checked = false;
+
+            LoadData();
         }
     }
 }

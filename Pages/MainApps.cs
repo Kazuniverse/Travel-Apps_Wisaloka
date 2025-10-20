@@ -42,6 +42,7 @@ namespace Pariwisata_Apps
             setting.home += (s, e) => BackToHome();
             history.home += (s, e) => BackToHome();
             dashboard.setting += (s, e) => LoadPage(panel1, setting);
+            dashboard.history += (s, e) => LoadPage(panel1, history);
         }
 
         private void MainApps_Load(object sender, EventArgs e)
@@ -52,7 +53,7 @@ namespace Pariwisata_Apps
             }
             else
             {
-                LoadPage(panel1, history);
+                LoadPage(panel1, dashboard);
             }
         }
 

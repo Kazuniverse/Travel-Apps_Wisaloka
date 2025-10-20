@@ -203,6 +203,12 @@
     <Compile Include="Reservation.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReservationDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReservationDetail.Designer.cs">
+      <DependentUpon>ReservationDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Session.cs" />
     <Compile Include="Pages\Form\SettingPage.cs">
       <SubType>UserControl</SubType>
@@ -289,6 +295,9 @@
     <EmbeddedResource Include="Pages\Form\SettingPage.resx">
       <DependentUpon>SettingPage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ReservationDetail.resx">
+      <DependentUpon>ReservationDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -357,6 +366,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\reject.png" />
     <None Include="Resources\settings1.png" />
     <None Include="Resources\invoice1.png" />
     <None Include="Resources\magnifying1.png" />

@@ -12,6 +12,10 @@ namespace Pariwisata_Apps
 {
     public partial class HistoryCard : UserControl
     {
+        PariwisataEntities db = new PariwisataEntities();
+        public HistoryPage Page { get; set; }
+        public int ReservationID { get; set; }
+
         public HistoryCard()
         {
             InitializeComponent();
@@ -45,6 +49,19 @@ namespace Pariwisata_Apps
         {
             get => guna2PictureBox1.Image;
             set => guna2PictureBox1.Image = value;
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            Page.guna2Panel4.Visible = true;
+
+            ReservationDetail detail = new ReservationDetail(ReservationID);
+            detail.ShowDialog();
+
+            if (detail.DialogResult == DialogResult.OK)
+            {
+                Page.guna2Panel4.Visible = false;
+            }
         }
     }
 }
