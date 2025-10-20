@@ -8,6 +8,6 @@ namespace Pariwisata_Apps
 {
     public static class Session
     {
-        public static int CustomerID { get; set; }
+        public static int CustomerID { get; set; } = 1;
     }
 }

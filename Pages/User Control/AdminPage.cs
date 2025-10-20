@@ -12,9 +12,12 @@ namespace Pariwisata_Apps
 {
     public partial class AdminPage : UserControl
     {
+        public event EventHandler logout;
         public AdminPage()
         {
             InitializeComponent();
+
+            button5.Click += (s, e) => logout?.Invoke(this, EventArgs.Empty);
         }
 
         void LoadPage(UserControl page)

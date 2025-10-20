@@ -19,6 +19,7 @@ namespace Pariwisata_Apps
         PariwisataEntities dbscope = new PariwisataEntities();
         private string[] say = { "Mau Kemana Nih Kita?", "Hmm... Enaknya Kemana Ya", "Wih! Lagi Banyak Duit Nih!"};
         private Random rand = new Random();
+        public event EventHandler setting;
 
         public Dashboard()
         {
@@ -28,6 +29,8 @@ namespace Pariwisata_Apps
             guna2HtmlLabel4.Text = "Price : " + nilai.ToString();
 
             label2.Text = say[rand.Next(say.Length)];
+
+            guna2CirclePictureBox2.Click += (s, e) => setting?.Invoke(this, EventArgs.Empty);
         }
 
         private void Dashboard_Load(object sender, EventArgs e)

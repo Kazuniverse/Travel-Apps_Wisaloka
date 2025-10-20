@@ -14,6 +14,11 @@ namespace Pariwisata_Apps
     {
         LoginPage login;
         RegisterPage register;
+        SettingPage setting;
+        AdminPage admin;
+        Dashboard dashboard;
+        Loading loading;
+        HistoryPage history;
         public Boolean isSigned = false;
         public List<Panel> panels = new List<Panel>();
 
@@ -23,26 +28,32 @@ namespace Pariwisata_Apps
 
             login = new LoginPage();
             register = new RegisterPage();
+            setting = new SettingPage();
+            admin = new AdminPage();
+            dashboard = new Dashboard();
+            history = new HistoryPage();
 
-            login.RegisterRequested += (s, e) => LoadPage(panel2, register);
-            register.LoginRequested += (s, e) => LoadPage(panel2, login);
-            login.masuk += (s, e) => LoadPage(panel3, new Dashboard());
-            register.masuk += (s, e) => LoadPage(panel3, new Dashboard());
+            login.RegisterRequested += (s, e) => LoadPage(panel1, register);
+            register.LoginRequested += (s, e) => LoadPage(panel1, login);
+            login.masuk += (s, e) => BackToHome();
+            register.masuk += (s, e) => BackToHome();
+            admin.logout += (s, e) => logout();
+            setting.logout += (s, e) => logout();
+            setting.home += (s, e) => BackToHome();
+            history.home += (s, e) => BackToHome();
+            dashboard.setting += (s, e) => LoadPage(panel1, setting);
         }
 
         private void MainApps_Load(object sender, EventArgs e)
         {
             if (Session.CustomerID == 0)
             {
-                LoadPage(panel1, new SettingPage());
-                LoadPage(panel2, login);
+                LoadPage(panel1, new Intro());
             }
             else
             {
-                panel1.Dispose();
-                panel2.Dispose();
+                LoadPage(panel1, history);
             }
-            LoadPage(panel4, new AdminPage());
         }
 
         public static void LoadPage(Panel panel, UserControl page)
@@ -51,6 +62,25 @@ namespace Pariwisata_Apps
             panel.Dock = DockStyle.Fill;
             page.Dock = DockStyle.Fill;
             panel.Controls.Add(page);
+        }
+
+        async void BackToHome()
+        {
+            loading = new Loading();
+            var showTask = Task.Run(() => loading.ShowDialog());
+
+            await Task.Delay(1000);
+
+            if (loading.InvokeRequired)
+            {
+                LoadPage(panel1, dashboard);
+                loading.Invoke(new Action(() => loading.Close()));
+            }
+            else
+            {
+                LoadPage(panel1, dashboard);
+                loading.Close();
+            }
         }
 
         void Loged()
@@ -63,15 +93,10 @@ namespace Pariwisata_Apps
             }
         }
 
-        private void ToRegis(object sender, EventArgs e)
+        void logout()
         {
-            LoadPage(panel2, new RegisterPage());
+            Session.CustomerID = 0;
+            LoadPage(panel1, login);
         }
-
-        private void ToLogin(object sender, EventArgs e)
-        {
-            LoadPage(panel2, new LoginPage());
-        }
-
     }
 }

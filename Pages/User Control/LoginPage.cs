@@ -16,11 +16,11 @@ namespace Pariwisata_Apps
         public event EventHandler RegisterRequested;
         public event EventHandler masuk;
 
-        public LoginPage()
+        public LoginPage()  
         {
             InitializeComponent();
             label5.Click += (s, e) => RegisterRequested?.Invoke(this, EventArgs.Empty);
-        }
+        }   
 
         private async void guna2Button1_Click(object sender, EventArgs e)
         {
@@ -54,14 +54,10 @@ namespace Pariwisata_Apps
                 {
                     load.Hide();
                     Session.CustomerID = customer.CustomerID;
-                    masuk?.Invoke(this, EventArgs.Empty);
                     MessageBox.Show("Login Success!");
                 }
 
-                load.Show();
-                Panel target = parent.Controls["panel2"] as Panel;
-                target?.Dispose();
-                load.Hide();
+                masuk?.Invoke(this, EventArgs.Empty);
             }
         }
     }

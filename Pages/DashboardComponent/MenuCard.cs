@@ -17,7 +17,6 @@ namespace Pariwisata_Apps
             InitializeComponent();
         }
 
-        // Properti publik biar bisa diset dari luar
         public string MenuTitle
         {
             get => lblTitle.Text;

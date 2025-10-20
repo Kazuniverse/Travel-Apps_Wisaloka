@@ -57,20 +57,14 @@ namespace Pariwisata_Apps
                 }
                 else
                 {
+                    loading.Hide();
                     MessageBox.Show("Register Succes!");
                     db.Customers.Add(customer);
                     db.SaveChanges();
                     Session.CustomerID = customer.CustomerID;
-                    masuk?.Invoke(this, EventArgs.Empty);
-                    loading.Hide();
                 }
             }
-            loading.Show();
-
-            Panel target = parentForm.Controls["panel2"] as Panel;
-            target?.Dispose();
-
-            loading.Hide();
+            masuk?.Invoke(this, EventArgs.Empty);
         }
     }
 }

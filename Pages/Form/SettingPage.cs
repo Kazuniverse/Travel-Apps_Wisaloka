@@ -12,10 +12,14 @@ namespace Pariwisata_Apps
 {
     public partial class SettingPage : UserControl
     {
+        public event EventHandler logout;
         private int id = Session.CustomerID;
+        public event EventHandler home;
         public SettingPage()
         {
             InitializeComponent();
+            guna2Button2.Click += (s, e) => logout?.Invoke(this, EventArgs.Empty);
+            guna2Button7.Click += (s, e) => home?.Invoke(this, EventArgs.Empty);
         }
 
         private void guna2Button6_Click(object sender, EventArgs e)

@@ -172,10 +172,13 @@
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Location = new System.Drawing.Point(131, 184);
             this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.ShadowDecoration.Depth = 5;
+            this.guna2Button1.ShadowDecoration.Enabled = true;
             this.guna2Button1.Size = new System.Drawing.Size(106, 45);
             this.guna2Button1.TabIndex = 23;
             this.guna2Button1.Text = "Confirm";
             this.guna2Button1.UseTransparentBackground = true;
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // guna2Button2
             // 
@@ -191,10 +194,13 @@
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.Location = new System.Drawing.Point(22, 184);
             this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.ShadowDecoration.Depth = 5;
+            this.guna2Button2.ShadowDecoration.Enabled = true;
             this.guna2Button2.Size = new System.Drawing.Size(106, 45);
             this.guna2Button2.TabIndex = 24;
             this.guna2Button2.Text = "Cancel";
             this.guna2Button2.UseTransparentBackground = true;
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // PassChangeForm
             // 
