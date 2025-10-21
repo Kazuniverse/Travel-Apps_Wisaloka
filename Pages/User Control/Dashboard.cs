@@ -21,6 +21,7 @@ namespace Pariwisata_Apps
         private Random rand = new Random();
         public event EventHandler setting;
         public event EventHandler history;
+        public event EventHandler<int> list;
 
         public Dashboard()
         {
@@ -60,7 +61,7 @@ namespace Pariwisata_Apps
 
                 foreach (var menu in menuList)
                 {
-                    MenuCard card = new MenuCard();
+                    PlaceCard card = new PlaceCard();
 
                     int basic = menu.BasicPrice - (menu.BasicPrice / 5);
 
@@ -91,6 +92,12 @@ namespace Pariwisata_Apps
                     {
                         card.MenuImage = Properties.Resources.arrow_small_left;
                     }
+
+                    card.DetailClicked += (s, l) =>
+                    {
+                        // Kirim PlaceID dari tempat yang diklik
+                        list?.Invoke(this, menu.PlaceID);
+                    };
 
                     flowLayoutPanel1.Controls.Add(card);
                 }
@@ -107,7 +114,7 @@ namespace Pariwisata_Apps
 
                 foreach (var menu in menuList)
                 {
-                    MenuCard card = new MenuCard();
+                    PlaceCard card = new PlaceCard();
 
                     int basic = menu.BasicPrice - (menu.BasicPrice / 5);
 
@@ -138,6 +145,13 @@ namespace Pariwisata_Apps
                     {
                         card.MenuImage = Properties.Resources.arrow_small_left;
                     }
+
+                    card.DetailClicked += (s, e) =>
+{
+    // Kirim PlaceID dari tempat yang diklik
+    list?.Invoke(this, menu.PlaceID);
+};
+
 
                     flowLayoutPanel1.Controls.Add(card);
                 }
@@ -158,7 +172,7 @@ namespace Pariwisata_Apps
 
                 foreach (var menu in cari)
                 {
-                    MenuCard card = new MenuCard();
+                    PlaceCard card = new PlaceCard();
                     int basic = menu.BasicPrice - (menu.BasicPrice / 5);
 
                     card.MenuTitle = menu.Name;
@@ -188,6 +202,13 @@ namespace Pariwisata_Apps
                     {
                         card.MenuImage = Properties.Resources.arrow_small_left;
                     }
+
+                    card.DetailClicked += (s, l) =>
+                    {
+                        // Kirim PlaceID dari tempat yang diklik
+                        list?.Invoke(this, menu.PlaceID);
+                    };
+
 
                     flowLayoutPanel1.Controls.Add(card);
                 }
@@ -212,6 +233,7 @@ namespace Pariwisata_Apps
             foreverTrackBar1.Value = 100;
             guna2RadioButton1.Checked = false;
             guna2RadioButton2.Checked = false;
+            guna2TextBox1.Clear();
 
             LoadData();
         }

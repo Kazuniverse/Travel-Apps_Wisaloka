@@ -10,9 +10,11 @@ using System.Windows.Forms;
 
 namespace Pariwisata_Apps
 {
-    public partial class MenuCard : UserControl
+    public partial class PlaceCard : UserControl
     {
-        public MenuCard()
+        public event EventHandler DetailClicked;
+
+        public PlaceCard()
         {
             InitializeComponent();
         }
@@ -60,11 +62,11 @@ namespace Pariwisata_Apps
         }
 
 
-        // Tombol aksi (misal: lihat detail)
-        private void btnDetail_Click(object sender, EventArgs e)
+        private void guna2Button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"Kamu memilih menu: {lblTitle.Text}");
+            DetailClicked?.Invoke(this, EventArgs.Empty);
         }
+
 
         private void guna2HtmlLabel1_Click(object sender, EventArgs e)
         {

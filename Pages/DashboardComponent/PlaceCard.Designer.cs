@@ -1,6 +1,6 @@
 ﻿namespace Pariwisata_Apps
 {
-    partial class MenuCard
+    partial class PlaceCard
     {
         /// <summary> 
         /// Required designer variable.
@@ -82,7 +82,7 @@
             this.guna2Button1.Size = new System.Drawing.Size(277, 29);
             this.guna2Button1.TabIndex = 3;
             this.guna2Button1.Text = "reservation";
-            this.guna2Button1.Click += new System.EventHandler(this.btnDetail_Click);
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // descBox
             // 
@@ -202,7 +202,7 @@
             this.picMenu.Cursor = System.Windows.Forms.Cursors.Default;
             this.picMenu.ImageRotate = 0F;
             this.picMenu.Location = new System.Drawing.Point(0, 0);
-            this.picMenu.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.picMenu.Margin = new System.Windows.Forms.Padding(0);
             this.picMenu.Name = "picMenu";
             this.picMenu.Size = new System.Drawing.Size(340, 154);
             this.picMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -237,7 +237,7 @@
         private Guna.UI2.WinForms.Guna2PictureBox picMenu;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblTitle;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblPrice;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        public Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2TextBox descBox;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;

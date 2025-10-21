@@ -19,6 +19,7 @@ namespace Pariwisata_Apps
         Dashboard dashboard;
         Loading loading;
         HistoryPage history;
+        ListMenu menu;
         public Boolean isSigned = false;
         public List<Panel> panels = new List<Panel>();
 
@@ -32,6 +33,7 @@ namespace Pariwisata_Apps
             admin = new AdminPage();
             dashboard = new Dashboard();
             history = new HistoryPage();
+            menu = new ListMenu(0);
 
             login.RegisterRequested += (s, e) => LoadPage(panel1, register);
             register.LoginRequested += (s, e) => LoadPage(panel1, login);
@@ -43,6 +45,12 @@ namespace Pariwisata_Apps
             history.home += (s, e) => BackToHome();
             dashboard.setting += (s, e) => LoadPage(panel1, setting);
             dashboard.history += (s, e) => LoadPage(panel1, history);
+            menu.home += (s, e) => BackToHome();
+            dashboard.list += (s, placeId) =>
+            {
+                menu = new ListMenu(placeId);
+                LoadPage(panel1, menu);
+            };
         }
 
         private void MainApps_Load(object sender, EventArgs e)
@@ -53,7 +61,7 @@ namespace Pariwisata_Apps
             }
             else
             {
-                LoadPage(panel1, dashboard);
+                LoadPage(panel1, menu);
             }
         }
 
